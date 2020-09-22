@@ -8,10 +8,9 @@ This repository has the goal of show you the evidence of my web projects; Sincer
 
 ## Technogolies
 Current Technologies that I applied until now.
-
-     -  HTML
-     -  CSS
-     -  JS
+ - HTML
+ - CSS
+ - JS
 
 
 ## Last Project Submitted (Quiz)
