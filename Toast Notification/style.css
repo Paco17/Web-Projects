@@ -1,0 +1,33 @@
+* {
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    margin: 0;
+    min-height: 100vh;
+}
+
+button{
+    background-color: #264653;
+    color: #2a9d8f;
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+#container{
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+}
+
+.toast{
+    background-color: rgb(35, 103, 134);
+    padding: 1rem;
+    color: sandybrown;
+    border-radius: 10px;
+    margin: 1rem;
+}
