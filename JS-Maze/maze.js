@@ -25,10 +25,17 @@ class Maze{
         current = this.grid[0][0];
     }
 
+    draw(){
+        maze.width = this.size;
+        maze.height = this.size;
+        maze.style.background='black';
+        current.visited = true;
+    }
+
 }
 
 class Cell{
-    constructor(rowNum, colNum, parentGird, parentSize){
+    constructor(rowNum, colNum, parentGrid, parentSize){
         this.rowNum = rowNum;
         this.colNum = colNum;
         this.parentGrid = parentGrid;
@@ -41,7 +48,54 @@ class Cell{
             leftWall:true,
         }
     }
+
+    drawTopWall(x,y,size, columns, rows){
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+        ctx.lineTo(x+size/columns, y);
+        ctx.stroke();
+    } 
+
+    drawRightWall(x,y,size, columns, rows){
+        ctx.beginPath();
+        ctx.moveTo(x+size/columns,y);
+        ctx.lineTo(x+size/columns, y+size/rows);
+        ctx.stroke();
+    } 
+
+    drawBottomWall(x,y,size, columns, rows){
+        ctx.beginPath();
+        ctx.moveTo(x,y+ size/rows);
+        ctx.lineTo(x+size/columns, y+size/rows);
+        ctx.stroke();
+    }
+    
+    drawLeftWall(x,y,size, columns, rows){
+        ctx.beginPath();
+        ctx.moveTo(x,y);
+        ctx.lineTo(x, y+size/rows);
+        ctx.stroke();
+    }
+
+    show(size, rows, columns){
+        let x= (this.colNum * size)  / columns;
+        let y = (this.rowNum * size / rows);
+
+        ctx.strokeStyle = "white";
+        ctz.fillStyle='black';
+        ctx.lineWidth=2;
+
+        if(this.walls.topWall) this.drawTopWall(x,y,size, columns,rows);
+        if(this.walls.rightWall) this.drawRightWall(x,y,size, columns,rows);
+        if(this.walls.bottomWall) this.drawBottompWall(x,y,size, columns,rows);
+        if(this.walls.leftWall) this.drawLeftWall(x,y,size, columns,rows);
+        if(this.visited){
+            ctx.fillRect(x+1,y+1,size/columns -2,size/rows -2);
+        }
+    }
+
 }
 
 let newMaze = new Maze(500,10,10);
 newMaze.setup();
+newMaze.draw();
