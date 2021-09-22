@@ -8,6 +8,21 @@
     <title>Maze</title>
 </head>
 <body>
+    <h1 class="title">Maze Generator</h1>
+    <div class="compleete">
+        <h3>Maze Complete</h3>
+        <button class="replay" id="submit">Play again</button>
+        <button class="close" id="submit">Close</button>
+    </div>
+
+    <form id="settings" action="">
+        <p>Maze Size</p>
+        <input type="number" id="size" value="500">
+        <p>Rows Columns</p>
+        <input type="number" id="number" value="20">
+        <input type="submit" id="submit" value="Generate Maze">
+    </form>
+
     <canvas class="maze"></canvas>
 
     <script src="maze.js"></script>

@@ -1,9 +1,10 @@
 //Initialize canvas
 let maze = document.querySelector(".maze");
 let ctx = maze.getContext("2d");
+let generationComplete = false;
 
 let current;
-
+let goal;
 class Maze{
     constructor(size, rows, columns){
         this.size = size;
@@ -53,15 +54,15 @@ class Maze{
             current.highlight(this.columns);
         }
 
-        if(this.stack.length == 0){
+        if(this.stack.length === 0){
             generationComplete = true;
             return;
         }
 
+
         window.requestAnimationFrame(()=>{
             this.draw();
-        })
-
+        });
     }
 
 }
@@ -150,7 +151,7 @@ class Cell{
     }
 
     removeWalls(cell1, cell2){
-        let  x =   (cell1.colNum - cell2.colNum);
+        let  x =   cell1.colNum - cell2.colNum;
 
         if(x === 1){
             cell1.walls.leftWall = false;
@@ -162,10 +163,10 @@ class Cell{
 
         let y = cell1.rowNum - cell2.rowNum;
         
-        if(x === 1){
+        if(y === 1){
             cell1.walls.topWall = false;
             cell2.walls.bottomWall = false;
-        }else if(x === -1){
+        }else if(y === -1){
             cell1.walls.bottomWall = false;
             cell2.walls.topWall = false;
         }
@@ -175,7 +176,7 @@ class Cell{
         let x= (this.colNum * size)  / columns;
         let y = (this.rowNum * size) / rows;
 
-        ctx.strokeStyle = "pink";
+        ctx.strokeStyle = "#ffffff";
         ctx.fillStyle="black";
         ctx.lineWidth=2;
 
